@@ -1,0 +1,30 @@
+---
+title: "GSoC'19"
+---
+
+
+### Akshaj Verma
+
+- Worked with Salsabila and the mentors to develop the <a href = "https://github.com/pkR-pkR/NNbenchmark" target="_blank"> NNbenchmark </a> Package. 
+- Created R scripts and RMD notebooks for benchmarking the the packages from letter A to L, i.e. AMORE, ANN2, appnn, autoencoder, automl, BNN,
+brnn, Buddle, CaDENCE, cld2, cld3, condmixt, DALEX2, DamiaNN, deepnet, deepNN, DNMF, elmNNRcpp, ELMR, EnsembleBase, evclass, gamlss.add, gcForest, GMDH,
+GMDH2, GMDHreg, grnn, h2o, hybridEnsemble, isingLenzMC, keras, kerasformula, kerasR, leabRa, learNN, and LilRhino.  
+- Read documentation of above packages and collaborated with Salsabila and the mentors to design a common format for the R scripts and R notebooks.
+- You can find the R scripts <a href = "https://github.com/pkR-pkR/NNbenchmarkTemplates/tree/master/R" target="_blank">here</a> and the R notebooks here <a href = "https://github.com/pkR-pkR/NNbenchmarkTemplates/tree/master/Rmd" target="_blank">here</a>.
+- Example <a href = "https://github.com/pkR-pkR/NNbenchmarkTemplates/blob/master/Rmd/NNbenchmark-nb-ann2.Rmd" target="_blank">Rmd notebook</a> and <a href = "https://github.com/pkR-pkR/NNbenchmarkTemplates/blob/master/R/NNbenchmark-ANN2-adam.R" target="_blank">R script</a>.
+- Since, a lot of code was distributed through emails, there aren't a lot of commits/PRs. Here's  one of the few PRs for the <a href = "https://github.com/pkR-pkR/NNbenchmarkTemplates/pull/2" target="_blank">NNbenchmarkTemplate</a> repo.
+- Commits to the <a href = "https://github.com/scarecrow21/NNbenchmarkWeb/commits/master" target="_blank"> NNbenchmarkWeb </a> repo.
+- Developed [this](https://akshajverma.com/NNbenchmarkWeb) website to disseminate the results. 
+
+<br>
+
+### Salsabila Mahdi
+
+- Worked with Akshaj and the mentors to develop the <a href = "https://github.com/pkR-pkR/NNbenchmark" target="_blank"> NNbenchmark </a> Package.
+- Created R scripts and RMD notebooks for benchmarking the the packages from letter M to Z, i.e. MachineShop, monmlp, neural, neuralnet, NeuralNetTools, NeuralSens, NlinTS, nnet, nnetpredint, nnfor, onnx, OptimClassifier, OSTSC, pnn, polyreg, predictoR, qrnn, QuantumOps, quarrint, radiant.model, rasclass, rcane, regressoR, rminer, rnn, RSNNS, ruta, simpleNeural, snnR, softmaxreg, Sojourn.Data, spnn, TeachNet, tensorflow, tfestimators, trackdem, TrafficBDE,  tsensembler, validann, and zFactor.  
+- Read documentation of above packages and collaborated with Akshaj and the mentors to design a common format for the R scripts and R notebooks.
+- You can find the R scripts <a href = "https://github.com/pkR-pkR/NNbenchmarkTemplates/tree/master/R" target="_blank">here</a> and the R notebooks <a href = "https://github.com/pkR-pkR/NNbenchmarkTemplates/tree/master/Rmd" target="_blank">here</a>.
+- Example <a href = "https://github.com/pkR-pkR/NNbenchmarkTemplates/blob/master/R/NNbenchmark-neuralnet-backprop.R" target="_blank">R script</a>.
+- Since, a lot of code was distributed through emails, there aren't a lot of commits/PRs. Here's one of the few PRs for the <a href = "https://github.com/pkR-pkR/NNbenchmarkTemplates/pull/1" target="_blank">NNbenchmarkTemplate</a> repo.
+- Commits to the <a href = "https://github.com/ApaBila/NNbenchmarkArticle/commits/master" target="_blank"> NNbenchmarkArticle </a> repo for a paper based on our results to be published in The R Journal.
+- Preparing a paper based on our results to be published in The R Journal. [In Progress]

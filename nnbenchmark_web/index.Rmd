@@ -1,0 +1,306 @@
+---
+title: "NNbenchmark"
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
+
+<div class = "row">
+
+<div class = "col-md-4">
+<img src="images/nnbenchmark_logo.png">
+</div>
+
+  
+<div class = "col-md-8">
+<br><br> NNbenchmark was created during the Google Summer of Code, 2019 as a part of The R Project for Statistical Computing, to verify the convergence of the training algorithms provided
+in 69 Neural Network R packages available on CRAN to date. Neural networks must be trained with second order algorithms and 
+not with first order algorithms as many packages seem to do. 
+
+The purpose of this project is to verify the quality of the training algorithms in R packages that provide neural network of perceptron type (one input layer, one normalized layer, one hidden layer with nonlinear activation function usually tanh(), 
+one normalized layer, one output output layer) for regression purpose i.e. $NN(X1, ..., Xn) = E[Y]$.  
+
+</div>
+  
+</div>
+
+
+
+
+
+
+<br>
+<br>
+
+
+# Packages Tested
+***
+
+This GSoC project will conduct a comprehensive survey of all packages that have the “neural network” keyword in thepackage title or in the package description. There are currently 69 packages on CRAN with this keyword.  
+
+
+|    []()       |               |               |               |               |               |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:| 
+|   AMORE       |    ANN2       |  appnn        | autoencoder   | automl        | BNN           |
+|   brnn        |    Buddle     |  CaDENCE      |   cld2        | cld3          | condmixt      |
+|   DALEX2      |    DamiaNN    |  deepnet      |   deepNN      | DNMF          | elmNNrcpp     |
+|   ELMR        | EnsembleBase  |  evclass      | gamlss.add    | gcForest      | GMDH          |
+|   GMDH2       |    GMDHreg    |  grnn         |   h2o         | hybridEnsemble|  isingLenzMC  |
+|   keras       | kerasformula  |  kerasR       |   leabRa      | learNN        |  LilRhino     |
+|  MachineShop  |   monmlp      |  neural       |  neuralnet    |NeuralNetTools | NeuralSens    |
+|  NlinTS       |  nnet         | nnetpredint   | nnfor         |  onnx         |OptimClassifier|  
+|   OSTSC       |  pnn          |   polyreg     | predictoR     |  qrnn         |   QuantumOps  | 
+| quarrint      | radiant.model |   rasclass    | rcane         |  regressoR    | rminer        |   
+|   rnn         | RSNNS         |  ruta         | simpleNeural  | snnR          |  softmaxreg   | 
+| Sojourn.Data  | spnn          |  TeachNet     |  tensorflow   | tfestimators  |  trackdem     | 
+| TrafficBDE    | validann      | zFactor       |               |               |               |
+
+
+
+<br>
+<br>
+
+
+# Evaluation Criteria
+***
+The algorithms were tested on 12 regression datasets (both univariate and multivariate) of varying complexity. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(NNbenchmark)
+library(kableExtra)
+library(dplyr)
+library(ggplot2)
+
+NNdataSummary(NNdatasets) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+The score for each package was based on the following parameters:  
+
+* Documentation (0-3 stars or a binary value of 0/1)
+* UtilFunction (0-3 stars or a binary value of 0/1)
+* ConvergenceQuality (0-3 stars based on percentile method)
+* ConvergenceTime (0-3 stars based on percentile method)
+
+
+To obtain the final rating, we take a weighted average of these 4 columns (giving more weight to ConvergenceQuality and ConvergenceTIme). 
+
+<br>
+<br>
+
+
+# Results {.tabset .tabset-fade .tabset-pills}
+***
+
+Following are the results of each package per dataset.
+
+## Dataset-mDette
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_mdette <- read.csv("data/mDette-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_mdette %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## Dataset-mFriedman
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_mFriedman <- read.csv("data/mFriedman-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_mFriedman %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## Dataset-mIshigami
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_mIshigami <- read.csv("data/mIshigami-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_mIshigami %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## Dataset-mRef153
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_mRef153 <- read.csv("data/mRef153-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_mIshigami %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## Dataset-uDmod1
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_uDmod1 <- read.csv("data/uDmod1-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_uDmod1 %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## Dataset-uDmod2
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_uDmod2 <- read.csv("data/uDmod2-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_uDmod2 %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## Dataset-uDreyfus1
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_uDreyfus1 <- read.csv("data/uDreyfus1-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_uDreyfus1 %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## Dataset-uDreyfus2
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_uDreyfus2 <- read.csv("data/uDreyfus2-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_uDreyfus2 %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+
+## Dataset-uGauss1
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_uGauss1 <- read.csv("data/uGauss1-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_uGauss1 %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## Dataset-uGauss2
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_uGauss2 <- read.csv("data/uGauss2-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_uGauss2 %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## Dataset-uGauss3
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_uGauss3 <- read.csv("data/uGauss3-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_uGauss3 %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## Dataset-uNeuroOne
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df_uNeuroOne <- read.csv("data/uNeuroOne-results.csv")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+df_uNeuroOne %>%
+  select(-c(start, end))  %>%
+  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+  group_by(package) %>%
+  slice(which.min(RMSE)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+
+```{r echo = FALSE}
+# base_dir <- "data/results/"
+# df_list <- list()
+# i = 1
+# for (f in list.files(base_dir)) {
+#   df_res <- read.csv(paste0(base_dir, f))
+#   df_list[[i]] <- df_res
+#   i = i + 1
+# }
+# 
+# df_final <- do.call(rbind, df_list)
+
+
+# df_final %>%
+#   select(-c(start, end, params)) %>%
+#   mutate(dataset = stringr::str_replace_all(stringr::str_extract(event, "^\\w+_"), "_", "")) %>%
+#   mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
+#   mutate(exp_run = stringr::str_extract(event, "\\d+$"))
+```
