@@ -10,7 +10,7 @@ The NNbenchmark package was developed during the Google Summer of Code, 2019 as 
 
 ### Students
 
-Akshaj Verma &nbsp;&nbsp; <a href="https://akshajverma.com" target="_blank" class="fa fa-globe"></a> &nbsp; <a href="https://www.linkedin.com/in/akshajverma7" target="_blank" class="fa fa-linkedin"></a> &nbsp; <a href="https://github.com/scarecrow21" target="_blank" class="fa fa-github"></a>  
+Akshaj Verma &nbsp;&nbsp; <a href="https://akshajverma.com" target="_blank" class="fa fa-globe"></a> &nbsp; <a href="https://www.linkedin.com/in/akshajverma7" target="_blank" class="fa fa-linkedin"></a> &nbsp; <a href="https://github.com/theairbend3r" target="_blank" class="fa fa-github"></a>  
 
 Salsabila Mahdi &nbsp;&nbsp; <a href="mailto:bila.mahdi@mhs.unsyiah.ac.id" class="far fa-envelope"></a>  &nbsp; <a href="https://github.com/ApaBila" target="_blank" class="fa fa-github"></a> 
 
