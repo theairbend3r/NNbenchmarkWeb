@@ -6,8 +6,10 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Notebooks"
-      href: notebooks.html
+    - text: "2019 Notebooks"
+      href: notebooks_2019.html
+    - text: "2020 Notebooks"
+      href: notebooks_2020.html
     
   right:    
     - text: "CRAN"
