@@ -22,9 +22,20 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -283,9 +294,6 @@ $(document).ready(function () {
 <li>
   <a href="notebooks.html">Notebooks</a>
 </li>
-<li>
-  <a href="gsoc19.html">gsoc19</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -321,15 +329,31 @@ text-align: justify}
 <p><img src="images/nnbenchmark_logo.png"></p>
 </div>
 <div class="col-md-8">
-<p><br><br> NNbenchmark was created during the Google Summer of Code, 2019 as a part of The R Project for Statistical Computing, to verify the convergence of the training algorithms provided in 69 Neural Network R packages available on CRAN to date. Neural networks must be trained with second order algorithms and not with first order algorithms as many packages seem to do.</p>
-<p>The purpose of this project is to verify the quality of the training algorithms in R packages that provide neural network of perceptron type (one input layer, one normalized layer, one hidden layer with nonlinear activation function usually tanh(), one normalized layer, one output output layer) for regression purpose i.e. <span class="math inline">\(NN(X1, ..., Xn) = E[Y]\)</span>.</p>
+<p><br><br> NNbenchmark was created during the Google Summer of Code program of 2019 and 2020 as a part of open-source organization - The R Project for Statistical Computing. To goal was to verify the convergence of the training algorithms provided in all Neural Network R packages available on CRAN to date. Neural networks must be trained with second order algorithms and not with first order algorithms as many packages seem to do.</p>
+<p>The purpose of this project is to verify the quality of the training algorithms in R packages that provide neural network of perceptron type (one input layer, one normalized layer, one hidden layer with non-linear activation function usually tanh(), one normalized layer, one output output layer) for regression purpose i.e. <span class="math inline">\(NN(X1, ..., Xn) = E[Y]\)</span>.</p>
 </div>
 </div>
 <p><br> <br></p>
 <div id="packages-tested" class="section level1">
 <h1>Packages Tested</h1>
 <hr />
-<p>This GSoC project will conduct a comprehensive survey of all packages that have the “neural network” keyword in thepackage title or in the package description. There are currently 69 packages on CRAN with this keyword.</p>
+<p>This project has conducted a comprehensive survey of all packages that have the “neural network” keyword in the package title or in the package description.</p>
+<!-- Old table -->
+<!-- |    []()       |               |               |               |               |               | -->
+<!-- |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|  -->
+<!-- |   AMORE       |    ANN2       |  appnn        | autoencoder   | automl        | BNN           | -->
+<!-- |   brnn        |    Buddle     |  CaDENCE      |   cld2        | cld3          | condmixt      | -->
+<!-- |   DALEX2      |    DamiaNN    |  deepnet      |   deepNN      | DNMF          | elmNNrcpp     | -->
+<!-- |   ELMR        | EnsembleBase  |  evclass      | gamlss.add    | gcForest      | GMDH          | -->
+<!-- |   GMDH2       |    GMDHreg    |  grnn         |   h2o         | hybridEnsemble|  isingLenzMC  | -->
+<!-- |   keras       | kerasformula  |  kerasR       |   leabRa      | learNN        |  LilRhino     | -->
+<!-- |  MachineShop  |   monmlp      |  neural       |  neuralnet    |NeuralNetTools | NeuralSens    | -->
+<!-- |  NlinTS       |  nnet         | nnetpredint   | nnfor         |  onnx         |OptimClassifier|   -->
+<!-- |   OSTSC       |  pnn          |   polyreg     | predictoR     |  qrnn         |   QuantumOps  |  -->
+<!-- | quarrint      | radiant.model |   rasclass    | rcane         |  regressoR    | rminer        |    -->
+<!-- |   rnn         | RSNNS         |  ruta         | simpleNeural  | snnR          |  softmaxreg   |  -->
+<!-- | Sojourn.Data  | spnn          |  TeachNet     |  tensorflow   | tfestimators  |  trackdem     |  -->
+<!-- | TrafficBDE    | validann      | zFactor       |               |               |               | -->
 <table>
 <thead>
 <tr class="header">
@@ -346,102 +370,38 @@ text-align: justify}
 <td align="center">AMORE</td>
 <td align="center">ANN2</td>
 <td align="center">appnn</td>
-<td align="center">autoencoder</td>
 <td align="center">automl</td>
-<td align="center">BNN</td>
+<td align="center">brnn</td>
+<td align="center">CaDENCE</td>
 </tr>
 <tr class="even">
-<td align="center">brnn</td>
-<td align="center">Buddle</td>
-<td align="center">CaDENCE</td>
-<td align="center">cld2</td>
-<td align="center">cld3</td>
-<td align="center">condmixt</td>
-</tr>
-<tr class="odd">
 <td align="center">DALEX2</td>
 <td align="center">DamiaNN</td>
 <td align="center">deepnet</td>
-<td align="center">deepNN</td>
-<td align="center">DNMF</td>
 <td align="center">elmNNrcpp</td>
-</tr>
-<tr class="even">
 <td align="center">ELMR</td>
 <td align="center">EnsembleBase</td>
-<td align="center">evclass</td>
-<td align="center">gamlss.add</td>
-<td align="center">gcForest</td>
-<td align="center">GMDH</td>
 </tr>
 <tr class="odd">
-<td align="center">GMDH2</td>
-<td align="center">GMDHreg</td>
-<td align="center">grnn</td>
 <td align="center">h2o</td>
-<td align="center">hybridEnsemble</td>
-<td align="center">isingLenzMC</td>
-</tr>
-<tr class="even">
 <td align="center">keras</td>
-<td align="center">kerasformula</td>
-<td align="center">kerasR</td>
-<td align="center">leabRa</td>
-<td align="center">learNN</td>
-<td align="center">LilRhino</td>
-</tr>
-<tr class="odd">
 <td align="center">MachineShop</td>
+<td align="center">minpack.lm</td>
 <td align="center">monmlp</td>
-<td align="center">neural</td>
 <td align="center">neuralnet</td>
-<td align="center">NeuralNetTools</td>
-<td align="center">NeuralSens</td>
 </tr>
 <tr class="even">
-<td align="center">NlinTS</td>
+<td align="center">nlsr</td>
 <td align="center">nnet</td>
-<td align="center">nnetpredint</td>
-<td align="center">nnfor</td>
-<td align="center">onnx</td>
-<td align="center">OptimClassifier</td>
-</tr>
-<tr class="odd">
-<td align="center">OSTSC</td>
-<td align="center">pnn</td>
-<td align="center">polyreg</td>
-<td align="center">predictoR</td>
 <td align="center">qrnn</td>
-<td align="center">QuantumOps</td>
-</tr>
-<tr class="even">
-<td align="center">quarrint</td>
 <td align="center">radiant.model</td>
-<td align="center">rasclass</td>
-<td align="center">rcane</td>
-<td align="center">regressoR</td>
 <td align="center">rminer</td>
-</tr>
-<tr class="odd">
-<td align="center">rnn</td>
 <td align="center">RSNNS</td>
-<td align="center">ruta</td>
-<td align="center">simpleNeural</td>
-<td align="center">snnR</td>
-<td align="center">softmaxreg</td>
-</tr>
-<tr class="even">
-<td align="center">Sojourn.Data</td>
-<td align="center">spnn</td>
-<td align="center">TeachNet</td>
-<td align="center">tensorflow</td>
-<td align="center">tfestimators</td>
-<td align="center">trackdem</td>
 </tr>
 <tr class="odd">
-<td align="center">TrafficBDE</td>
+<td align="center">snnR</td>
+<td align="center">TraineR</td>
 <td align="center">validann</td>
-<td align="center">zFactor</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
@@ -18313,7 +18273,7 @@ validann
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

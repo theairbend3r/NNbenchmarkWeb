@@ -22,8 +22,19 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -282,9 +293,6 @@ $(document).ready(function () {
 <li>
   <a href="notebooks.html">Notebooks</a>
 </li>
-<li>
-  <a href="gsoc19.html">gsoc19</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -311,7 +319,7 @@ $(document).ready(function () {
 </div>
 
 
-<p>The NNbenchmark package was developed during the Google Summer of Code, 2019 as a part of The R Project for Statistical Computing. This project was developed by the combined efforts of the students and the mentors.</p>
+<p>The NNbenchmark package was developed during the Google Summer of Code program held in 2019 and 2020 as a part of open-source organisation - The R Project for Statistical Computing. This project was developed by the combined efforts of the following students and mentors.</p>
 <div class="row">
 <div class="col-md-6">
 <h3 id="students">Students</h3>
@@ -324,14 +332,12 @@ $(document).ready(function () {
 <p>John C. Nash    <a href="https://r-forge.r-project.org/projects/optimizer" target="_blank" class="fab fa-r-project"></a>   <a href="https://gitlab.com/nashjc/histoRicalg" target="_blank" class="fa fa-gitlab"></a></p>
 </div>
 <div class="col-md-6">
-<h3 id="gsoc19-proposal">GSoC’19 proposal</h3>
-<p><a href="https://summerofcode.withgoogle.com/archive/2019/projects/5785579348819968/" target="_blank">Akshaj Verma</a> <br> <a href="https://summerofcode.withgoogle.com/archive/2019/projects/6434601185050624/" target="_blank">Salsabila Mahdi</a></p>
-<p><br></p>
-<h3 id="alternate-website">Alternate Website:</h3>
-<p><a href="https://www.inmodelia.com/gsoc2019.html" target="_blank">inmodelia.com/gsoc2019</a></p>
+<!-- ### GSoC'19 proposal -->
+<!-- <a href="https://summerofcode.withgoogle.com/archive/2019/projects/5785579348819968/" target="_blank">Akshaj Verma</a> <br> -->
+<!-- <a href="https://summerofcode.withgoogle.com/archive/2019/projects/6434601185050624/" target="_blank">Salsabila Mahdi</a> -->
 <p><br></p>
 <h3 id="github-repositories">Github Repositories:</h3>
-<p><a href="https://github.com/pkR-pkR/NNbenchmark">NNbenchmark</a> <br> <a href="https://github.com/scarecrow21/NNbenchmarkWeb">NNbenchmarkWeb</a> <br> <a href="https://github.com/pkR-pkR/NNbenchmarkTemplates">NNbenchmarkTemplates</a></p>
+<p><a href="https://github.com/pkR-pkR/NNbenchmark">NNbenchmark</a> <br> <a href="https://github.com/scarecrow21/NNbenchmarkWeb">NNbenchmarkWeb</a> <br> <a href="https://github.com/ApaBila/NNbenchmarkArticle">NNbenchmarkArticle</a> <br> <a href="https://github.com/pkR-pkR/NNbenchmarkTemplates">NNbenchmarkTemplates</a></p>
 </div>
 </div>
 
@@ -344,7 +350,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

@@ -16,20 +16,12 @@ text-align: justify}
 
   
 <div class = "col-md-8">
-<br><br> NNbenchmark was created during the Google Summer of Code, 2019 as a part of The R Project for Statistical Computing, to verify the convergence of the training algorithms provided
-in 69 Neural Network R packages available on CRAN to date. Neural networks must be trained with second order algorithms and 
-not with first order algorithms as many packages seem to do. 
+<br><br> NNbenchmark was created during the Google Summer of Code program of 2019 and 2020 as a part of open-source organization - The R Project for Statistical Computing. To goal was to verify the convergence of the training algorithms provided in all Neural Network R packages available on CRAN to date. Neural networks must be trained with second order algorithms and not with first order algorithms as many packages seem to do. 
 
-The purpose of this project is to verify the quality of the training algorithms in R packages that provide neural network of perceptron type (one input layer, one normalized layer, one hidden layer with nonlinear activation function usually tanh(), 
-one normalized layer, one output output layer) for regression purpose i.e. $NN(X1, ..., Xn) = E[Y]$.  
-
+The purpose of this project is to verify the quality of the training algorithms in R packages that provide neural network of perceptron type (one input layer, one normalized layer, one hidden layer with non-linear activation function usually tanh(), one normalized layer, one output output layer) for regression purpose i.e. $NN(X1, ..., Xn) = E[Y]$.  
 </div>
   
 </div>
-
-
-
-
 
 
 <br>
@@ -39,26 +31,32 @@ one normalized layer, one output output layer) for regression purpose i.e. $NN(X
 # Packages Tested
 ***
 
-This GSoC project will conduct a comprehensive survey of all packages that have the “neural network” keyword in thepackage title or in the package description. There are currently 69 packages on CRAN with this keyword.  
+This project has conducted a comprehensive survey of all packages that have the “neural network” keyword in the package title or in the package description.
 
+<!-- Old table -->
+<!-- |    []()       |               |               |               |               |               | -->
+<!-- |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|  -->
+<!-- |   AMORE       |    ANN2       |  appnn        | autoencoder   | automl        | BNN           | -->
+<!-- |   brnn        |    Buddle     |  CaDENCE      |   cld2        | cld3          | condmixt      | -->
+<!-- |   DALEX2      |    DamiaNN    |  deepnet      |   deepNN      | DNMF          | elmNNrcpp     | -->
+<!-- |   ELMR        | EnsembleBase  |  evclass      | gamlss.add    | gcForest      | GMDH          | -->
+<!-- |   GMDH2       |    GMDHreg    |  grnn         |   h2o         | hybridEnsemble|  isingLenzMC  | -->
+<!-- |   keras       | kerasformula  |  kerasR       |   leabRa      | learNN        |  LilRhino     | -->
+<!-- |  MachineShop  |   monmlp      |  neural       |  neuralnet    |NeuralNetTools | NeuralSens    | -->
+<!-- |  NlinTS       |  nnet         | nnetpredint   | nnfor         |  onnx         |OptimClassifier|   -->
+<!-- |   OSTSC       |  pnn          |   polyreg     | predictoR     |  qrnn         |   QuantumOps  |  -->
+<!-- | quarrint      | radiant.model |   rasclass    | rcane         |  regressoR    | rminer        |    -->
+<!-- |   rnn         | RSNNS         |  ruta         | simpleNeural  | snnR          |  softmaxreg   |  -->
+<!-- | Sojourn.Data  | spnn          |  TeachNet     |  tensorflow   | tfestimators  |  trackdem     |  -->
+<!-- | TrafficBDE    | validann      | zFactor       |               |               |               | -->
 
 |    []()       |               |               |               |               |               |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:| 
-|   AMORE       |    ANN2       |  appnn        | autoencoder   | automl        | BNN           |
-|   brnn        |    Buddle     |  CaDENCE      |   cld2        | cld3          | condmixt      |
-|   DALEX2      |    DamiaNN    |  deepnet      |   deepNN      | DNMF          | elmNNrcpp     |
-|   ELMR        | EnsembleBase  |  evclass      | gamlss.add    | gcForest      | GMDH          |
-|   GMDH2       |    GMDHreg    |  grnn         |   h2o         | hybridEnsemble|  isingLenzMC  |
-|   keras       | kerasformula  |  kerasR       |   leabRa      | learNN        |  LilRhino     |
-|  MachineShop  |   monmlp      |  neural       |  neuralnet    |NeuralNetTools | NeuralSens    |
-|  NlinTS       |  nnet         | nnetpredint   | nnfor         |  onnx         |OptimClassifier|  
-|   OSTSC       |  pnn          |   polyreg     | predictoR     |  qrnn         |   QuantumOps  | 
-| quarrint      | radiant.model |   rasclass    | rcane         |  regressoR    | rminer        |   
-|   rnn         | RSNNS         |  ruta         | simpleNeural  | snnR          |  softmaxreg   | 
-| Sojourn.Data  | spnn          |  TeachNet     |  tensorflow   | tfestimators  |  trackdem     | 
-| TrafficBDE    | validann      | zFactor       |               |               |               |
-
-
+|   AMORE       |    ANN2       |  appnn        |   automl      |  brnn         |  CaDENCE      |
+|   DALEX2      |    DamiaNN    |  deepnet      |   elmNNrcpp   |   ELMR        | EnsembleBase  |               | 
+|   h2o         |   keras       |  MachineShop  |   minpack.lm  |  monmlp       |  neuralnet    |
+|  nlsr         |  nnet         |  qrnn         | radiant.model | rminer        | RSNNS         | 
+| snnR          |  TraineR      | validann      |
 
 <br>
 <br>

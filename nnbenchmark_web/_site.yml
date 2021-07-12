@@ -8,8 +8,6 @@ navbar:
       href: about.html
     - text: "Notebooks"
       href: notebooks.html
-    - text: "gsoc19"
-      href: gsoc19.html
     
   right:    
     - text: "CRAN"

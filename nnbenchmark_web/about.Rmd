@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-The NNbenchmark package was developed during the Google Summer of Code, 2019 as a part of The R Project for Statistical Computing. This project was developed by the combined efforts of the students and the mentors.
+The NNbenchmark package was developed during the Google Summer of Code program held in 2019 and 2020 as a part of open-source organisation - The R Project for Statistical Computing. This project was developed by the combined efforts of the following students and mentors.
 
 <div class = "row">
 
@@ -29,23 +29,19 @@ John C. Nash &nbsp;&nbsp; <a href="https://r-forge.r-project.org/projects/optimi
 
 <div class = "col-md-6">
 
-### GSoC'19 proposal
+<!-- ### GSoC'19 proposal -->
 
-<a href="https://summerofcode.withgoogle.com/archive/2019/projects/5785579348819968/" target="_blank">Akshaj Verma</a> <br>
-<a href="https://summerofcode.withgoogle.com/archive/2019/projects/6434601185050624/" target="_blank">Salsabila Mahdi</a>
-
-<br>
-
-### Alternate Website:
-
-<a href="https://www.inmodelia.com/gsoc2019.html" target="_blank">inmodelia.com/gsoc2019</a>
+<!-- <a href="https://summerofcode.withgoogle.com/archive/2019/projects/5785579348819968/" target="_blank">Akshaj Verma</a> <br> -->
+<!-- <a href="https://summerofcode.withgoogle.com/archive/2019/projects/6434601185050624/" target="_blank">Salsabila Mahdi</a> -->
 
 <br>
+
 
 ### Github Repositories:
 
 [NNbenchmark](https://github.com/pkR-pkR/NNbenchmark) <br>
 [NNbenchmarkWeb](https://github.com/scarecrow21/NNbenchmarkWeb) <br>
+[NNbenchmarkArticle](https://github.com/ApaBila/NNbenchmarkArticle) <br>
 [NNbenchmarkTemplates](https://github.com/pkR-pkR/NNbenchmarkTemplates)
 
 </div>
