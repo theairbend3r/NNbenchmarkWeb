@@ -63,242 +63,80 @@ This project has conducted a comprehensive survey of all packages that have the 
 
 
 # Evaluation Criteria
-***
-The algorithms were tested on 12 regression datasets (both univariate and multivariate) of varying complexity. 
+
+We test the neural-network packages on 13 datasets based on the following criteria.
+
+1. Accuracy, i.e. the ability to find the global minima, measured by the Root Mean Square Error (RMSE) in a fixed number of iterations.
+2. Speed of the training algorithms.
+3. Availability of helpful utilities.s 
+4. Quality of the documentation.
+
+Following are the datasets 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-library(NNbenchmark)
+datasets <- read.csv(file = "./data/datasets.csv")
+datasets %>%
+  kable(align="l") %>%
+  pack_rows("Multivariate", 1, 4) %>%
+  pack_rows("Univariate", 5, 12) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+```
+<br>
+<br>
+
+# Results
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
 library(kableExtra)
-library(dplyr)
-library(ggplot2)
-
-NNdataSummary(NNdatasets) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-
-The score for each package was based on the following parameters:  
-
-* Documentation (0-3 stars or a binary value of 0/1)
-* UtilFunction (0-3 stars or a binary value of 0/1)
-* ConvergenceQuality (0-3 stars based on percentile method)
-* ConvergenceTime (0-3 stars based on percentile method)
-
-
-To obtain the final rating, we take a weighted average of these 4 columns (giving more weight to ConvergenceQuality and ConvergenceTIme). 
-
-<br>
-<br>
-
-
-# Results {.tabset .tabset-fade .tabset-pills}
-***
-
-Following are the results of each package per dataset.
-
-## Dataset-mDette
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_mdette <- read.csv("data/mDette-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_mdette %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-## Dataset-mFriedman
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_mFriedman <- read.csv("data/mFriedman-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_mFriedman %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-## Dataset-mIshigami
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_mIshigami <- read.csv("data/mIshigami-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_mIshigami %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
+library(NNbenchmark)
+options(knitr.kable.NA = '')
+if(file.exists("./data/Table1.csv")) {  
+  Table1 <- read.table("./data/Table1-final.csv", sep = ";", dec=".",
+                       header=TRUE)
+  Table1 <- Table1[Table1[,2] != "", ]
+}else 
+   Table1 <- rbind(rep("missing",6))
+colnames(Table1) <- c("Package", "Algorithm", "Time", "RMSE",
+                    "Util", "Doc", "Call")
+pkg.name <- Table1$Package[Table1$Package != ""]
+idx.pkg.name <- (1+0:NROW(Table1))[Table1$Package != ""]
+Table1$Doc <- floor(Table1$Doc)
+#repeat value
+Table1$Package <- rep(pkg.name, times=diff(idx.pkg.name))
+Table1$Util <- rep(Table1$Util[!is.na(Table1$Util)], times=diff(idx.pkg.name))
+Table1$Doc <- rep(Table1$Doc[!is.na(Table1$Doc)], times=diff(idx.pkg.name))
+Table1$Call <- rep(Table1$Call[!is.na(Table1$Call)], times=diff(idx.pkg.name))
+#convert to stars
+cvt2star <- function(j)
+{
+  switch(as.character(j), "0" = " ", "1"="\\*", "2"="**", "3"="***", "4"="****")
+}
+Table1$Doc <- unlist(sapply(Table1$Doc, cvt2star))
+Table1$Util <- unlist(sapply(Table1$Util, cvt2star))
+Table1$Call <- unlist(sapply(Table1$Call, cvt2star))
+#reorder columns
+Table1 <- Table1[, c(1, 5:7, 2:4)]
+#get the min RMSE by pkg
+pkgRkbyRMSE <- sort(tapply(Table1$RMSE, Table1$Package, min))
+#create new index
+n <- NROW(Table1)
+getorderbypkg <- function(p)
+{
+  idx <- (1:n)[Table1$Package == p]
+  if(length(idx) > 1)
+    return(idx[order(Table1[idx, "RMSE"])])
+  else
+    return(idx)
+}
+idxRk <- unlist(sapply(names(pkgRkbyRMSE), getorderbypkg))
+Table1rk <- Table1[idxRk, ]
+rownames(Table1rk) <- 1:n
 
 
-## Dataset-mRef153
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_mRef153 <- read.csv("data/mRef153-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_mIshigami %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-
-## Dataset-uDmod1
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_uDmod1 <- read.csv("data/uDmod1-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_uDmod1 %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-## Dataset-uDmod2
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_uDmod2 <- read.csv("data/uDmod2-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_uDmod2 %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-
-## Dataset-uDreyfus1
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_uDreyfus1 <- read.csv("data/uDreyfus1-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_uDreyfus1 %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-
-## Dataset-uDreyfus2
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_uDreyfus2 <- read.csv("data/uDreyfus2-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_uDreyfus2 %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-
-
-## Dataset-uGauss1
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_uGauss1 <- read.csv("data/uGauss1-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_uGauss1 %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-
-## Dataset-uGauss2
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_uGauss2 <- read.csv("data/uGauss2-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_uGauss2 %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-
-## Dataset-uGauss3
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_uGauss3 <- read.csv("data/uGauss3-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_uGauss3 %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-## Dataset-uNeuroOne
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-df_uNeuroOne <- read.csv("data/uNeuroOne-results.csv")
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-df_uNeuroOne %>%
-  select(-c(start, end))  %>%
-  mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-  group_by(package) %>%
-  slice(which.min(RMSE)) %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-```
-
-
-
-```{r echo = FALSE}
-# base_dir <- "data/results/"
-# df_list <- list()
-# i = 1
-# for (f in list.files(base_dir)) {
-#   df_res <- read.csv(paste0(base_dir, f))
-#   df_list[[i]] <- df_res
-#   i = i + 1
-# }
-# 
-# df_final <- do.call(rbind, df_list)
-
-
-# df_final %>%
-#   select(-c(start, end, params)) %>%
-#   mutate(dataset = stringr::str_replace_all(stringr::str_extract(event, "^\\w+_"), "_", "")) %>%
-#   mutate(package = stringr::str_replace_all(stringr::str_extract(event, "_\\w+::"), c("_" = "", "::" = ""))) %>%
-#   mutate(exp_run = stringr::str_extract(event, "\\d+$"))
+Table1rk %>% 
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  add_header_above(c(" ", "Individual Rating" = 3, " " = 1, "Global Score" = 2)) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
 ```

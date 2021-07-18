@@ -1,0 +1,13 @@
+Dataset,Rows ,Input ,Neurons,Parameters
+mDette,500,3,5,26
+mFriedman,500,5,5,36
+mIshigami,500,3,10,51
+mRef153,153,5,3,22
+uDmod1,51,1,6,19
+uDmod2,51,1,5,16
+uDreyfus1,51,1,3,10
+uDreyfus2,51,1,3,10
+uGauss1,250,1,5,16
+uGauss2,250,1,4,13
+uGauss3,250,1,4,13
+uNeuroOne,51,1,2,7

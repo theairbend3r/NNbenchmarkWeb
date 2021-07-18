@@ -1,0 +1,165 @@
+---
+title: "Results"
+---
+
+<br>
+
+This page contains results for all packages tested per dataset. The results are divided into two sections - Multivariate Datasets and Univariate Datasets. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyr)
+
+formatTable <- function(df) {
+  colnames(df) <- c("Package::algorithm", "Time mean", "RMSE min", "RMSE median", "RMSE D51", 
+                      "MAE median", "WAE median", "NPFA")
+  
+  df <- separate(data = df, col = "Package::algorithm", into = c("Package", "Algorithm"), sep = "::")
+  return (df)
+}
+```
+
+<br>
+<br>
+
+# Multivariate Datasets {.tabset .tabset-fade .tabset-pills}
+
+## mDette
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/mDette-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## mFriedman
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/mFriedman-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+
+## mIshigami
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/mIshigami-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## mRef153
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/mRef153-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+<br/>
+<br/>
+
+# Univariate Datasets {.tabset .tabset-fade .tabset-pills}
+
+## uDmod1
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uDmod1-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## uDmod2
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uDmod2-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## uDreyfus1
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uDreyfus1-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## uDreyfus2
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uDreyfus2-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## uGauss1
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uGauss1-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## uGauss2
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uGauss2-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+## uGauss3
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uGauss3-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## uNeuroOne
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uNeuroOne-result-summary.csv")) %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+# Summary statistics for top-5 packages
+
+The table provides the summary statistics of top-5 NN packages over 20 runs on the large dataset `bWoodN1` which contains 20,000 rows with 6 inputs valued in [0,1] for a (single) numeric output.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+bwood_df <- read.csv("data/Table3.csv")
+colnames(bwood_df) <- c("Package::algorithm", "RMSE min", "RMSE median", "RMSE D51", "MAE median", "WAE median", "Time Median")
+bwood_df <- separate(data = bwood_df, col = "Package::algorithm", into = c("Package", "Algorithm"), sep = "::")
+
+bwood_df %>%
+  kable(align="l") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+

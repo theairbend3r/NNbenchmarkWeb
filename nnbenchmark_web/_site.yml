@@ -8,6 +8,8 @@ navbar:
       href: about.html
     - text: "Notebooks"
       href: notebooks.html
+    - text: "Results"
+      href: results.html
     
   right:    
     - text: "CRAN"
