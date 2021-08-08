@@ -2,6 +2,7 @@
 title: "NNbenchmark"
 ---
 
+
 <br>
 <br>
 
@@ -54,7 +55,7 @@ This project has conducted a comprehensive survey of all packages that have the 
 
 We test the neural-network packages on 13 datasets based on the following criteria.
 
-1. Accuracy, i.e. the ability to find the global minima, measured by the Root Mean Square Error (RMSE) in a fixed number of iterations.
+1. Accuracy: the ability to find the global minima, measured by the Root Mean Square Error (RMSE) in a fixed number of iterations.
 2. Speed of the training algorithms.
 3. Availability of helpful utilities.s 
 4. Quality of the documentation.
