@@ -1,0 +1,18 @@
+---
+title: "Discarded Packages"
+---
+
+<br>
+<br>
+
+
+## A Review of discarded packages.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(kableExtra)
+disc_packages <- read.csv("./data/discpack.csv")
+colnames(disc_packages) <- c("Id", "Package", 	"Category", 	"Reason to Discard")
+kableExtra::kable(disc_packages, align="lcl") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```

@@ -1,0 +1,135 @@
+---
+title: "NNbenchmark"
+---
+
+<br>
+<br>
+
+
+<style>
+body {
+text-align: justify}
+</style>
+
+
+<div class = "row">
+
+<div class = "col-md-4">
+<img src="images/nnbenchmark_logo.png">
+</div>
+
+  
+<div class = "col-md-8">
+<br><br> NNbenchmark was created during the Google Summer of Code program of 2019 and 2020 as a part of open-source organization - The R Project for Statistical Computing. To goal was to verify the convergence of the training algorithms provided in all Neural Network R packages available on CRAN to date. Neural networks must be trained with second order algorithms and not with first order algorithms as many packages seem to do. 
+
+The purpose of this project is to verify the quality of the training algorithms in R packages that provide neural network of perceptron type (one input layer, one normalized layer, one hidden layer with non-linear activation function usually tanh(), one normalized layer, one output output layer) for regression purpose i.e. $NN(X1, ..., Xn) = E[Y]$.  
+</div>
+  
+</div>
+
+
+<br>
+<br>
+
+
+## Packages Tested
+***
+
+This project has conducted a comprehensive survey of all packages that have the “neural network” keyword in the package title or in the package description.
+
+|    []()       |               |               |               |               |               |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:| 
+|   AMORE       |    ANN2       |  appnn        |   automl      |  brnn         |  CaDENCE      |
+|   DALEX2      |    DamiaNN    |  deepnet      |   elmNNrcpp   |   ELMR        | EnsembleBase  |                
+|   h2o         |   keras       |  MachineShop  |   minpack.lm  |  monmlp       |  neuralnet    |
+|  nlsr         |  nnet         |  qrnn         | radiant.model | rminer        | RSNNS         | 
+| snnR          |  TraineR      | validann      |
+
+
+<br>
+<br>
+
+
+## Evaluation Criteria
+
+We test the neural-network packages on 13 datasets based on the following criteria.
+
+1. Accuracy, i.e. the ability to find the global minima, measured by the Root Mean Square Error (RMSE) in a fixed number of iterations.
+2. Speed of the training algorithms.
+3. Availability of helpful utilities.s 
+4. Quality of the documentation.
+
+Following are the datasets 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(dplyr)
+library(kableExtra)
+library(NNbenchmark)
+
+
+options(knitr.kable.NA = '')
+
+datasets <- read.csv(file = "./data/datasets.csv")
+datasets %>%
+  kable(align="lcccc") %>%
+  pack_rows("Multivariate", 1, 4) %>%
+  pack_rows("Univariate", 5, 12) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+```
+
+<br>
+<br>
+
+## Results
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+if(file.exists("./data/Table1.csv")) {  
+  Table1 <- read.table("./data/Table1-final.csv", sep = ";", dec=".",
+                       header=TRUE)
+  Table1 <- Table1[Table1[,2] != "", ]
+}else 
+   Table1 <- rbind(rep("missing",6))
+colnames(Table1) <- c("Package", "Algorithm", "Time", "RMSE",
+                    "Util", "Doc", "Call")
+pkg.name <- Table1$Package[Table1$Package != ""]
+idx.pkg.name <- (1+0:NROW(Table1))[Table1$Package != ""]
+Table1$Doc <- floor(Table1$Doc)
+#repeat value
+Table1$Package <- rep(pkg.name, times=diff(idx.pkg.name))
+Table1$Util <- rep(Table1$Util[!is.na(Table1$Util)], times=diff(idx.pkg.name))
+Table1$Doc <- rep(Table1$Doc[!is.na(Table1$Doc)], times=diff(idx.pkg.name))
+Table1$Call <- rep(Table1$Call[!is.na(Table1$Call)], times=diff(idx.pkg.name))
+#convert to stars
+cvt2star <- function(j)
+{
+  switch(as.character(j), "0" = " ", "1"="\\*", "2"="**", "3"="***", "4"="****")
+}
+Table1$Doc <- unlist(sapply(Table1$Doc, cvt2star))
+Table1$Util <- unlist(sapply(Table1$Util, cvt2star))
+Table1$Call <- unlist(sapply(Table1$Call, cvt2star))
+#reorder columns
+Table1 <- Table1[, c(1, 5:7, 2:4)]
+#get the min RMSE by pkg
+pkgRkbyRMSE <- sort(tapply(Table1$RMSE, Table1$Package, min))
+#create new index
+n <- NROW(Table1)
+getorderbypkg <- function(p)
+{
+  idx <- (1:n)[Table1$Package == p]
+  if(length(idx) > 1)
+    return(idx[order(Table1[idx, "RMSE"])])
+  else
+    return(idx)
+}
+idxRk <- unlist(sapply(names(pkgRkbyRMSE), getorderbypkg))
+Table1rk <- Table1[idxRk, ]
+rownames(Table1rk) <- 1:n
+
+
+Table1rk %>% 
+  kable(align="lccclcc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  add_header_above(c(" ", "Individual Rating" = 3, " " = 1, "Global Score" = 2)) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+```

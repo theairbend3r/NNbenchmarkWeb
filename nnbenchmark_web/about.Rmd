@@ -1,0 +1,55 @@
+---
+title: "About"
+---
+
+<br>
+<br>
+
+
+The NNbenchmark package was developed during the Google Summer of Code program held in 2019 and 2020 as a part of open-source organisation - The R Project for Statistical Computing. This project was developed by the combined efforts of the following students and mentors.
+
+<div class = "row">
+
+<div class = "col-md-6">
+
+### Students
+
+Akshaj Verma &nbsp;&nbsp; <a href="https://akshajverma.com" target="_blank" class="fa fa-globe"></a> &nbsp; <a href="https://www.linkedin.com/in/akshajverma7" target="_blank" class="fa fa-linkedin"></a> &nbsp; <a href="https://github.com/theairbend3r" target="_blank" class="fa fa-github"></a>  
+
+Salsabila Mahdi &nbsp;&nbsp; <a href="mailto:bila.mahdi@mhs.unsyiah.ac.id" class="far fa-envelope"></a>  &nbsp; <a href="https://github.com/ApaBila" target="_blank" class="fa fa-github"></a> 
+
+<br>
+
+### Mentors  
+
+Patrice Keiner &nbsp;&nbsp; <a href="mailto:patrice.kiener@inmodelia.com" class="far fa-envelope"></a>
+
+Christophe Dutang &nbsp;&nbsp; <a href="http://dutangc.free.fr" target="_blank" class="fa fa-globe"></a> &nbsp; <a href="https://www.linkedin.com/in/christophe-dutang-1253501" target="_blank" class="fa fa-linkedin"></a> &nbsp; <a href="https://r-forge.r-project.org/users/dutangc" target="_blank" class="fab fa-r-project"></a> &nbsp; <a href="https://github.com/dutangc" target="_blank" class="fa fa-github"></a>
+
+John C. Nash &nbsp;&nbsp; <a href="https://r-forge.r-project.org/projects/optimizer" target="_blank" class="fab fa-r-project"></a> &nbsp; <a href="https://gitlab.com/nashjc/histoRicalg" target="_blank" class="fa fa-gitlab"></a>
+
+</div>
+
+
+<div class = "col-md-6">
+
+<!-- ### GSoC'19 proposal -->
+
+<!-- <a href="https://summerofcode.withgoogle.com/archive/2019/projects/5785579348819968/" target="_blank">Akshaj Verma</a> <br> -->
+<!-- <a href="https://summerofcode.withgoogle.com/archive/2019/projects/6434601185050624/" target="_blank">Salsabila Mahdi</a> -->
+
+<br>
+
+
+### Github Repositories:
+
+[NNbenchmark](https://github.com/pkR-pkR/NNbenchmark) <br>
+[NNbenchmarkWeb](https://github.com/scarecrow21/NNbenchmarkWeb) <br>
+[NNbenchmarkArticle](https://github.com/ApaBila/NNbenchmarkArticle) <br>
+[NNbenchmarkTemplates](https://github.com/pkR-pkR/NNbenchmarkTemplates)
+
+</div>
+
+
+</div>
+

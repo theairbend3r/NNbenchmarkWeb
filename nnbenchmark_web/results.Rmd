@@ -1,0 +1,201 @@
+---
+title: "Results"
+---
+
+<br>
+<br>
+
+
+## All convergence scores per package:algorithm sored by minimum RMSE
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+if(file.exists("./data/TableAppendixC.csv")) {  
+  Table1SupplApp <- read.csv("./data/TableAppendixC.csv", sep = ";") 
+}else 
+  Table1SupplApp <- rep("missing",8)
+
+colnames(Table1SupplApp) <- c("Num", "Input format", "Maxit", "Learn.rate", "median",
+                    "D51", "MAE", "WAE")
+
+Table1SupplApp[, "Package"] <- Table1[Table1SupplApp$Num, "Package"]
+Table1SupplApp[, "Algorithm"] <- Table1[Table1SupplApp$Num, "Algorithm"]
+Table1SupplApp <- Table1SupplApp[, c("Package","Algorithm", "Input format", "Maxit", "Learn.rate", "median",
+                    "D51", "MAE", "WAE")]
+
+
+if(all(Table1SupplApp[, "Algorithm"] == Table1$Algorithm))
+{
+  Table1SupplApp <- Table1SupplApp[idxRk, ]
+  rownames(Table1SupplApp) <- 1:NROW(Table1SupplApp)
+}
+
+Table1SupplApp <- Table1SupplApp %>%
+  mutate(Learn.rate = as.character(Learn.rate)) %>%
+  mutate(Learn.rate = ifelse(Learn.rate == "-", "N/A", Learn.rate))
+
+
+kableExtra::kable(Table1SupplApp, align="llccccccc") %>%
+  add_header_above(c(" "=2, "Input parameter"=3, "RMSE Score"=2, "Other score"=2)) %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+<br>
+<br>
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyr)
+
+formatTable <- function(df) {
+  colnames(df) <- c("Package::algorithm", "Time mean", "RMSE min", "RMSE median", "RMSE D51", 
+                      "MAE median", "WAE median", "NPFA")
+  
+  df <- separate(data = df, col = "Package::algorithm", into = c("Package", "Algorithm"), sep = "::")
+  return (df)
+}
+```
+
+
+## Packages Tested per Multivariate Dataset {.tabset .tabset-fade .tabset-pills}
+
+### mDette
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/mDette-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+### mFriedman
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/mFriedman-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+
+### mIshigami
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/mIshigami-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+### mRef153
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/mRef153-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+<br>
+
+## Packages Tested per Univariate Dataset {.tabset .tabset-fade .tabset-pills}
+
+### uDmod1
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uDmod1-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+### uDmod2
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uDmod2-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+### uDreyfus1
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uDreyfus1-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+### uDreyfus2
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uDreyfus2-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+### uGauss1
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uGauss1-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+### uGauss2
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uGauss2-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+### uGauss3
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uGauss3-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+### uNeuroOne
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+formatTable(read.csv("data/tables-extra/uNeuroOne-result-summary.csv")) %>%
+  kable(align="llccccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+<br>
+<br>
+
+# Summary statistics for top-10 packages on bWoodN1 Dataset
+
+The table provides the summary statistics of top-10 NN packages over 20 runs on the large dataset `bWoodN1` which contains 20,000 rows with 6 inputs valued in [0,1] for a (single) numeric output.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+bwood_df <- read.csv("data/top-10-bwood.csv") %>% arrange(RMSE.median)
+colnames(bwood_df) <- c("Package", "Time (mean)", "RMSE (min)", "RMSE (median)", "RMSE (D51)", "MAE (median)", "WAE (median)")
+# bwood_df <- separate(data = bwood_df, col = "Package::algorithm", into = c("Package", "Algorithm"), sep = "::")
+bwood_df %>%
+  kable(align="lcccccc") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+
+

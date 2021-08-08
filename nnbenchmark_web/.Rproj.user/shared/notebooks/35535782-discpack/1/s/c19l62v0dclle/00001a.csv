@@ -1,0 +1,4 @@
+"0","disc_packages <- read.csv(""./data/discpack.csv"")"
+"0","colnames(disc_packages) <- c(""Id"", ""Package"", 	""Category"", 	""Reason to Discard"")"
+"0","kableExtra::kable(disc_packages, align=""l"") %>%"
+"0","  kable_styling(bootstrap_options = c(""striped"", ""hover"", ""condensed"", ""responsive""))"

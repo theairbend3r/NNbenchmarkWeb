@@ -1,0 +1,43 @@
+---
+title: "Package Notebooks"
+---
+
+<br>
+<br>
+
+
+This page contains links to the individual notebooks per package. In the notebooks, each package is run against all the datasets with the obtained results displayed.
+
+
+<div class = "col-md-6">
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-AMORE.html" target = "_blank">AMORE</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-ANN2.html" target = "_blank">ANN2</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-automl.html" target = "_blank">automl</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-brnn.html" target = "_blank">brnn</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-CaDENCE.html" target = "_blank">CaDENCE</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-caret.html" target = "_blank">caret</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-deepdive.html" target = "_blank">deepdive</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-deepnet.html" target = "_blank">deepnet</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-elmNNRcpp.html" target = "_blank">elmNNRcpp</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-ELMR.html" target = "_blank">ELMR</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-EnsembleBase.html" target = "_blank">EnsembleBase</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-h2o.html" target = "_blank">h2o</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-keras.html" target = "_blank">keras</a> <br>
+</div>
+
+
+<div class = "col-md-6">
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-MachineShop.html" target = "_blank">MachineShop</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-minpack.lm.html" target = "_blank">minpack.lm</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-monmlp.html" target = "_blank">monmlp</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-neuralnet.html" target = "_blank">neuralnet</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-nlsr.html" target = "_blank">nlsr</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-nnet.html" target = "_blank">nnet</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-qrnn.html" target = "_blank">qrnn</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-radiant.model.html" target = "_blank">radiant.model</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-rminer.html" target = "_blank">rminer</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-RSNNS.html" target = "_blank">RSNNS</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-snnR.html" target = "_blank">snnR</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-traineR.html" target = "_blank">traineR</a> <br>
+  <a href="notebooks/Rmd_2020/NNbenchmark-2020-validann.html" target = "_blank">validann</a> <br>
+</div>

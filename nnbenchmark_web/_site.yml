@@ -1,0 +1,28 @@
+name: "NNbenchmark"
+navbar:
+  title: "NNbenchmark"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Notebooks"
+      href: notebooks.html
+    - text: "Results"
+      href: results.html
+    - text: "Discarded Packages"
+      href: discpack.html
+    
+  right:    
+    - text: "CRAN"
+      href: https://CRAN.R-project.org/package=NNbenchmark
+    - text: "Github"
+      icon: fa-github
+      href: https://github.com/pkR-pkR/NNbenchmark
+
+output_dir: "../docs"
+
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
